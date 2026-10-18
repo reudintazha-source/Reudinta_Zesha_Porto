@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap');
+/* THEME LAYER: load AFTER style.css. Sky-and-storybook look, analyst-grade restraint. */
+:root{--ink:#1F2A44;--soft:#5B6788;--sun:#FFC83D;--sun-d:#E0A21A;--iris:#4F46E5;--mint:#2EC4B6}
+body:not(.dark){background:linear-gradient(180deg,#D9EFFF 0%,#F1FAFF 38%,#E8F8F1 100%) fixed;color:var(--ink)}
+body.dark{background:linear-gradient(180deg,#0E1330,#10142B 55%,#0B1A1F) fixed}
+
+/* sections become translucent "cloud" panels with a scalloped top edge */
+body:not(.dark) section.bg-white,body:not(.dark) section.bg-\[\#F8F9FA\],body:not(.dark) footer{background:rgba(255,255,255,.55)!important;backdrop-filter:blur(6px)}
+body.dark section.bg-white,body.dark section.bg-\[\#F8F9FA\],body.dark footer{background:rgba(20,24,52,.6)!important}
+section:not(#home),footer{border-top:0!important;position:relative}
+section:not(#home)::before,footer::before{content:"";position:absolute;left:0;right:0;top:-1px;height:22px;pointer-events:none;
+  background:radial-gradient(circle at 20px 0,rgba(255,255,255,.85) 20px,transparent 21px) 0 0/40px 22px repeat-x}
+body.dark section:not(#home)::before,body.dark footer::before{background-image:radial-gradient(circle at 20px 0,rgba(255,255,255,.07) 20px,transparent 21px)}
+
+/* hero sky */
+#hero-overlay{background:linear-gradient(180deg,#CFEAFF,#F2FBFF)}
+body.dark #hero-overlay{background:linear-gradient(180deg,#141A3D,#0E1330)}
+#home::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120px 48px at 12% 22%,#fff,transparent 70%),radial-gradient(170px 60px at 80% 15%,#fff,transparent 70%),radial-gradient(140px 52px at 62% 72%,rgba(255,255,255,.75),transparent 70%);
+  animation:skyDrift 45s ease-in-out infinite alternate}
+body.dark #home::before{opacity:.12}
+@keyframes skyDrift{to{transform:translateX(4%)}}
+#flower-field{z-index:4}
+.flower{pointer-events:auto;cursor:pointer;filter:drop-shadow(0 3px 4px rgba(0,0,0,.15))}
+.flower.pop{animation:flowerPop .6s ease-out forwards!important}
+@keyframes flowerPop{to{transform:scale(2.4) rotate(40deg);opacity:0}}
+
+/* nav + dock */
+body:not(.dark) nav.fixed{background:rgba(255,255,255,.72)!important;border-bottom:2px solid #fff}
+body.dark nav.fixed{background:rgba(14,19,48,.8)!important}
+body:not(.dark) .dock-nav{background:rgba(255,255,255,.85);border:2px solid #fff;box-shadow:0 12px 30px rgba(79,70,229,.2)}
+body:not(.dark) #dock-wrap a{color:#44507A!important}
+body:not(.dark) #dock-wrap a:hover{background:rgba(79,70,229,.1)!important;color:var(--iris)!important}
+
+/* chunky, tactile buttons (game feel) */
+.btn-premium,body.dark .btn-premium{background:var(--sun);color:#3A2A00;box-shadow:0 6px 0 var(--sun-d),0 14px 24px rgba(224,162,26,.3)}
+.btn-premium:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--sun-d),0 18px 28px rgba(224,162,26,.35)}
+.btn-premium:active{transform:translateY(4px);box-shadow:0 2px 0 var(--sun-d)}
+body:not(.dark) .btn-secondary{background:#fff;border:2px solid #fff;box-shadow:0 6px 0 #C9D8F2}
+
+/* section kickers as soft pills */
+span.block.mb-3.text-xs{display:inline-block!important;font-family:Fredoka,sans-serif;letter-spacing:.06em;background:rgba(79,70,229,.1);padding:.35rem .9rem;border-radius:999px}
+
+/* cards */
+body:not(.dark) #project-container>div,body:not(.dark) #certificates-container>div,body:not(.dark) #stats-container>div{background:#fff!important;border:2px solid #fff!important;box-shadow:0 14px 34px rgba(79,70,229,.12)}
+body.dark #project-container>div,body.dark #certificates-container>div,body.dark #stats-container>div{background:#1A1F3D!important}
+#project-container>div,#certificates-container>div{border-radius:1.75rem!important}
+#stats-container>div{border-radius:1.5rem;padding:1.5rem}
+.modal-box{border-radius:2rem!important;border:3px solid #fff}
+body:not(.dark) .coverflow-card-inner{background:linear-gradient(160deg,#fff,#EAF4FF);color:var(--ink);border:2px solid #fff;box-shadow:0 18px 40px rgba(79,70,229,.18)}
+body:not(.dark) .coverflow-card h3{color:var(--ink)}
+body:not(.dark) .coverflow-card p{color:var(--soft)}
+body:not(.dark) .coverflow-chips span{background:rgba(79,70,229,.08);color:#4338CA;border-color:transparent}
+
+/* skills become collectible badges */
+#skills-container span{cursor:pointer;position:relative;border-radius:1rem!important;border:2px solid #fff!important;user-select:none}
+#skills-container span:hover{animation:wiggle .4s}
+#skills-container span.got::after{content:"✓";position:absolute;top:-8px;right:-6px;width:18px;height:18px;border-radius:50%;background:var(--mint);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+@keyframes wiggle{25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+
+/* cat is now clickable */
+#cat-mascot{pointer-events:auto!important;cursor:pointer}
+#cat-mascot.jump #cat-svg{animation:catHop .5s ease-out}
+@keyframes catHop{40%{transform:translateY(-26px) rotate(-4deg)}}
+.cat-bubble{position:absolute;left:50%;bottom:100%;transform:translate(-50%,6px);white-space:nowrap;background:#fff;color:var(--ink);font:600 12px Fredoka,sans-serif;padding:.45rem .8rem;border-radius:1rem;box-shadow:0 8px 20px rgba(0,0,0,.15);opacity:0;transition:.25s}
+.cat-bubble.show{opacity:1;transform:translate(-50%,-4px)}
+
+/* GAME HUD */
+#xp-hud{position:fixed;top:76px;left:16px;z-index:45;font-family:Fredoka,sans-serif}
+#xp-pill{display:flex;align-items:center;gap:.6rem;padding:.4rem .9rem .4rem .4rem;border-radius:999px;background:#fff;border:2px solid #fff;box-shadow:0 8px 22px rgba(79,70,229,.2);color:var(--ink);font:inherit}
+#xp-lv{width:34px;height:34px;border-radius:50%;background:var(--sun);color:#3A2A00;display:grid;place-items:center;font-weight:600;box-shadow:inset 0 -3px 0 var(--sun-d)}
+.xp-meta{display:flex;flex-direction:column;gap:3px;text-align:left;min-width:92px}
+.xp-meta b{font-size:12px;font-weight:600;line-height:1}
+#xp-bar{display:block;height:6px;border-radius:9px;background:#E3E9F7;overflow:hidden}
+#xp-bar u{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--iris),#818CF8);transition:width .5s}
+#xp-count{font-size:12px;color:var(--soft)}
+#quest-panel{margin-top:.6rem;width:270px;background:#fff;border-radius:1.25rem;padding:1rem;box-shadow:0 18px 40px rgba(79,70,229,.25);color:var(--ink)}
+#quest-panel[hidden]{display:none}
+#quest-panel h4{font-weight:600;margin-bottom:.6rem}
+#quest-panel li{display:flex;gap:.55rem;font:500 13px 'Plus Jakarta Sans',sans-serif;padding:.35rem 0}
+#quest-panel li small{display:block;color:var(--soft);font-size:11px}
+#quest-panel li i{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid #C5CEE6;font-style:normal;font-size:11px;display:grid;place-items:center;color:#fff}
+#quest-panel li.ok i{background:var(--mint);border-color:var(--mint)}
+#quest-panel li.ok b{text-decoration:line-through;opacity:.55}
+body.dark #xp-pill,body.dark #quest-panel{background:#1A1F3D;border-color:#2A3158;color:#EEF}
+body.dark #xp-bar{background:#2A3158}
+#toast-stack{position:fixed;top:76px;right:16px;z-index:60;display:flex;flex-direction:column;gap:.5rem;pointer-events:none}
+.toast{pointer-events:auto;background:#fff;color:var(--ink);font:600 13px Fredoka,sans-serif;padding:.7rem 1rem;border-radius:1rem;box-shadow:0 12px 28px rgba(79,70,229,.25);animation:toastIn .35s cubic-bezier(.34,1.56,.64,1)}
+.toast.out{opacity:0;transform:translateX(20px);transition:.4s}
+.toast a{color:var(--iris);text-decoration:underline}
+@keyframes toastIn{from{opacity:0;transform:translateX(30px) scale(.9)}}
+.float-xp{position:fixed;z-index:70;pointer-events:none;font:600 14px Fredoka,sans-serif;color:var(--iris);text-shadow:0 1px 0 #fff;animation:floatUp .9s ease-out forwards}
+@keyframes floatUp{to{transform:translateY(-44px);opacity:0}}
+.confetti{position:fixed;top:60%;z-index:80;font-size:22px;pointer-events:none;animation:conf 1.6s ease-out forwards}
+@keyframes conf{to{transform:translate(var(--dx),var(--dy)) rotate(var(--r));opacity:0}}
+@media(min-width:769px){#xp-hud,#xp-hud *,.flower,#cat-mascot,#skills-container span{cursor:none!important}}
+@media(max-width:768px){#xp-hud{top:70px;left:10px}.xp-meta{display:none}#quest-panel{width:240px}}
+@media(prefers-reduced-motion:reduce){#home::before,.flower,.confetti{animation:none!important}}
